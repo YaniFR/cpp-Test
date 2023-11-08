@@ -42,6 +42,14 @@ string personnage(int personnage){
 
 }
 
+string leplusgros(){
+    unsigned short int cocoloco = 600;
+    unsigned short int dahmen = 2;
+
+    string legros = (cocoloco < dahmen) ?  "dahmen" : "cocoloco";
+    return legros;
+}
+
 int main(int argc,string argv ){
 
     short unsigned int pos {8}; // 2 bytes, valeur seulement positif grace au unsigned
