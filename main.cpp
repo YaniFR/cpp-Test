@@ -23,10 +23,10 @@ vector<char *> get_strings(char *caca1){
     return liste_de_caca;
 }
 
-const int potbuy = 1;
-const int noven = 2;
-const int yani = 3;
-const char *caca = "dz";
+const short unsigned int potbuy = 1;
+const short unsigned int noven = 2;
+const short unsigned int yani = 3;
+const char caca[3] = "dz";
 
 //perso.push_back("dz");
 
