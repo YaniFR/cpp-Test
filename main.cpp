@@ -6,15 +6,15 @@
 using json = nlohmann::json;
 using namespace std;
 
-vector<char *> get_strings(char *caca1){
+vector<string> get_strings(string caca1){
 
     // création d'un tableau
-    vector<char *> liste_de_caca; 
+    vector<string> liste_de_caca; 
     
     // réservation de 2 places maximum pour le tableau
     liste_de_caca.reserve(2); 
 
-    char caca[16] = "mortier au caca";
+    string caca = "mortier au caca";
 
     // equivalent de append
     liste_de_caca.push_back(caca); 
@@ -22,22 +22,21 @@ vector<char *> get_strings(char *caca1){
 
     return liste_de_caca;
 }
+typedef short unsigned int dz;
 
-const short unsigned int potbuy = 1;
-const short unsigned int noven = 2;
-const short unsigned int yani = 3;
-const char caca[3] = "dz";
+const dz potbuy = 1;
+const dz noven = 2;
+const dz yani = 3;
+const string caca = "dz";
 
 //perso.push_back("dz");
-
 
 void personnage(vector<string> personnage){
     
     
-
-    int i;
-    for(i = 0; i < personnage.size(); i++){
-        cout << personnage[i] << endl;
+    for(string &perso : personnage){
+        perso += " caca";
+        cout << perso << endl;
     }
 }
 
@@ -60,27 +59,28 @@ string personnagetest(int personnage){
 
 }
 
-map<string, unsigned short int> dictio;
+typedef map<string, unsigned short int> t_map;
 
-void initialize_map(){
+void initialize_map(t_map *dictio){
+
     ifstream fichier_poids("poids.json");
     json data = json::parse(fichier_poids); 
     
-    dictio = data["KEY"]; 
+    *dictio = data["KEY"]; 
     //cout << data["KEY"];
 }
 
 
-bool dans_dictio(string perso){
-
+bool dans_dictio(string perso, t_map dictio){
+    
     return dictio.count(perso);
 
 }
-string leplusgros(vector<string> perso){
+string leplusgros(vector<string> perso, t_map dictio){
     /*unsigned short int cocoloco = 600;
     unsigned short int dahmen = 2;*/
 
-    if (dans_dictio(perso[0]) && dans_dictio(perso[1])){
+    if (dans_dictio(perso[0], dictio) && dans_dictio(perso[1], dictio)){
         string legros = (dictio[perso[0]] < dictio[perso[1]]) ?  perso[1] : perso[0];
         return legros;
     }
@@ -108,7 +108,7 @@ int main(int argc,char **argv){
             auto pos2 {8u}; // determine automatiquement unsigned int 
             short signed int neg {-12}; // 2 bytes, valeur acceptant les nombres négatifs grace au signed
 
-            /*vector<char *> texte = get_strings(argv[1]);
+            /*vector<string> texte = get_strings(argv[1]);
             cout << texte[0] << endl << pos << endl;        
             cout << texte[1] << endl << neg << endl;*/
             cout << argc << endl;
@@ -117,13 +117,15 @@ int main(int argc,char **argv){
 
         // 3 : test de la fonction le plus gros >>> n'utilise que les deux premiers arguments
         case 3: {
-            initialize_map();
+            t_map dictio;
+            initialize_map(&dictio);
             vector<string> perso(argv + 2, argv + 4);
-            cout << leplusgros(perso);
+            cout << leplusgros(perso, dictio);
         }
 
         case 4: {
-            initialize_map();
+            t_map dictio;
+            initialize_map(&dictio);
         }
     
     }
