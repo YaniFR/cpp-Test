@@ -119,7 +119,7 @@ int main(int argc,char **argv){
         case 3: {
             t_map dictio;
             initialize_map(&dictio);
-            vector<string> perso(argv + 2, argv + 4);
+            vector<string> perso(argv + 2, argv + 3);
             cout << leplusgros(perso, dictio);
         }
 
