@@ -3,7 +3,7 @@
 
 My first c++ project !
 
-### Download the source code
+### Downloading the source code
 
 You first need to clone the project :
 
