@@ -157,7 +157,7 @@ int main(int argc,char **argv){
             Player Potbuy("Potbuy");
             cout << Potbuy.get_name() << endl;
             cout << Potbuy.get_value("HP") << endl;
-            cout << Potbuy.Inventory << endl;
+            Potbuy.Inventory.print();
 
             
         }

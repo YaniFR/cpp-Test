@@ -1,30 +1,30 @@
 #pragma once
-#include <istream>
+#include <iostream>
 #include <memory>
 #include <ostream>
 #include <string>
 #include <vector>
-#include "Potions.hpp"
-#include <iostream>
+#include "./Potions/Potions.hpp"
+#include "./Weapons/Weapons.hpp"
+#include <map>
+#include <algorithm>
+
+typedef std::map<class Potions, int> Potions_map;
 
 class Inventory{
     private:
-        std::vector<Potions> Potions;
+        std::vector<Weapons> Weapons;
+
+        int num_Potions;
+        int num_Weapons;        
 
     public:
-        Inventory(){
-            Potions.push_back(small_Potion());
-        };
+        Inventory();
 
-        friend std::ostream& operator<<(std::ostream& os,class Inventory& Inventory){
-            for(class Potions &potion : Inventory.Potions){
-                os << potion.Name << std::endl;
-            }
-            return os;
-        };
+        Potions_map Potions;
 
-        void add_Potions(class Potions potion){
-            Potions.push_back(potion);
-        }
+        void print();
+        void add_Potions(class Potions potion, int amount = 1);
+        void add_Weapons(class Weapons weapon, int amount = 1);
 
 };
