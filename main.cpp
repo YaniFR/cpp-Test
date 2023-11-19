@@ -3,6 +3,8 @@
 #include <map>
 #include "json.hpp"
 #include <fstream>
+#include <sstream>
+#include "./Entity/Entity.hpp"
 using json = nlohmann::json;
 using namespace std;
 
@@ -61,22 +63,23 @@ string personnagetest(int personnage){
 
 typedef map<string, unsigned short int> t_map;
 
-void initialize_map(t_map *dictio){
+void initialize_map(t_map &dictio){
 
     ifstream fichier_poids("poids.json");
     json data = json::parse(fichier_poids); 
     
-    *dictio = data["KEY"]; 
+    dictio = data["KEY"]; 
     //cout << data["KEY"];
 }
 
 
-bool dans_dictio(string perso, t_map dictio){
+
+bool dans_dictio(string perso, t_map &dictio){
     
     return dictio.count(perso);
 
 }
-string leplusgros(vector<string> perso, t_map dictio){
+string leplusgros(vector<string> perso, t_map &dictio){
     /*unsigned short int cocoloco = 600;
     unsigned short int dahmen = 2;*/
 
@@ -87,6 +90,14 @@ string leplusgros(vector<string> perso, t_map dictio){
     else{
         return "Le personnage ne figure pas dans le dictionnaire";
     }
+}
+
+string liste_perso(t_map &dictio){
+    ostringstream liste;
+    for( const auto &[key, valeur] : dictio){
+        liste << key << " : " << valeur << "\n";
+    }
+    return liste.str();
 }
 
 int main(int argc,char **argv){
@@ -118,14 +129,34 @@ int main(int argc,char **argv){
         // 3 : test de la fonction le plus gros >>> n'utilise que les deux premiers arguments
         case 3: {
             t_map dictio;
-            initialize_map(&dictio);
+            initialize_map(dictio);
             vector<string> perso(argv + 2, argv + 3);
             cout << leplusgros(perso, dictio);
         }
 
+        // 4 : test dictio
         case 4: {
             t_map dictio;
-            initialize_map(&dictio);
+            initialize_map(dictio);
+        }
+
+        // 5 : liste tout les personnages disponnibles
+        case 5: {
+            t_map dictio;
+            initialize_map(dictio);
+            cout << liste_perso(dictio);
+        }
+        // test des class
+        case 6: {
+            Entity Zombie(10.0, "Zombie");
+            Entity Zebi;
+            cout << Zombie.HP << endl << Zombie.Name << endl;
+            cout << Zebi.Name;
+            
+        }
+        // default : 
+        default : {
+            auto dz = []()->string{ return "tahia rajel djazair"; }; // lambda function
         }
     
     }
