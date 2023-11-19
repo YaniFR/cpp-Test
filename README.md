@@ -48,5 +48,5 @@ number :
 
 Don't waste your time on this project it's just a test project for me to learn c++ ! <br />
 
-BUT ! If you see some code that could be improved etc, you can contect me via @chef_yanou on discord to provide me all the information !
+BUT ! If you see some code that could be improved etc, you can contact me via @chef_yanou on discord to provide me all the information !
 
