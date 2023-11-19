@@ -1,10 +1,12 @@
 #include <iostream>
+#include <ostream>
 #include <vector>
 #include <map>
 #include "json.hpp"
 #include <fstream>
 #include <sstream>
-#include "./Entity/Entity.hpp"
+#include "./Include/Entity.hpp"
+#include "./Include/Player.hpp"
 using json = nlohmann::json;
 using namespace std;
 
@@ -61,7 +63,7 @@ string personnagetest(int personnage){
 
 }
 
-typedef map<string, unsigned short int> t_map;
+//typedef map<string, unsigned short int> t_map;
 
 void initialize_map(t_map &dictio){
 
@@ -148,10 +150,15 @@ int main(int argc,char **argv){
         }
         // test des class
         case 6: {
-            Entity Zombie(10.0, "Zombie");
-            Entity Zebi;
-            cout << Zombie.HP << endl << Zombie.Name << endl;
-            cout << Zebi.Name;
+            //Entity Zombie(10.0, "Zombie");
+            //Entity Zebi;
+            /*cout << Zombie << endl << Zombie.Name << endl;
+            cout << Zebi.Name;*/
+            Player Potbuy("Potbuy");
+            cout << Potbuy.get_name() << endl;
+            cout << Potbuy.get_value("HP") << endl;
+            cout << Potbuy.Inventory << endl;
+
             
         }
         // default : 
