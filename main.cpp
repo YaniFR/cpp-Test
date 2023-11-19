@@ -110,8 +110,8 @@ int main(int argc,char **argv){
         case 1: {   
             vector<string> perso(argv + 2, argv + argc);
             //perso.assign(argv + 1, argv + argc);
-            vector<string> perso2;
-            perso2.insert(perso2.end(), {"potbuy","yani","noven","issuko","kamaboko"});
+            //vector<string> perso2;
+            //perso2.insert(perso2.end(), {"potbuy","yani","noven","issuko","kamaboko"});
             personnage(perso);
         }
 
