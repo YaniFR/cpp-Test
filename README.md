@@ -2,7 +2,7 @@
 
 My first c++ project !
 
-### Downloading the source code
+### Downloadinging the source code
 
 You first need to clone the project :
 
