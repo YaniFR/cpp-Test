@@ -1,9 +1,8 @@
-
 # cpp-Test
 
 My first c++ project !
 
-### Download the source code
+### Downloading the source code
 
 You first need to clone the project :
 
@@ -26,7 +25,13 @@ $cppFiles = Get-ChildItem -Path .\Source -Recurse -Filter *.cpp | Select-Object 
 $cppFiles += "main.cpp"
 g++ $cppFiles -o test
 ```
-CMake will be used later on (im too lazy atm)
+OR you can use [CMake](https://cmake.org/) to compile the project 
+
+```shell
+cmake
+cd build
+cmake --build .
+```
 
 ### Running the code
 
@@ -48,5 +53,4 @@ number :
 
 Don't waste your time on this project it's just a test project for me to learn c++ ! <br />
 
-BUT ! If you see some code that could be improved etc, you can contect me via @chef_yanou on discord to provide me all the information !
-
+BUT ! If you see some code that could be improved etc, you can contact me via @chef_yanou on discord to provide me all the information !
