@@ -12,7 +12,7 @@ class Classes{
         Classes();
         Classes(std::string);
 
-        virtual t_map get_Stats();
+        t_map get_Stats();
         std::string get_name();
 
     protected:

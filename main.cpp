@@ -1,3 +1,4 @@
+#include <algorithm>
 #include <corecrt.h>
 #include <iostream>
 #include <ostream>
@@ -7,9 +8,9 @@
 #include "json.hpp"
 #include <fstream>
 #include <sstream>
-#include "./Include/Entity.hpp"
 #include "./Include/Player.hpp"
 #include "./Include/Classes/Classes.hpp"
+#include "./Include/Enemy/Enemy.hpp"
 using json = nlohmann::json;
 using namespace std;
 using t_map = std::map<std::string, size_t>;
@@ -110,10 +111,29 @@ string liste_perso(t_map &dictio){
 template<typename K, typename V>
 std::ostream& operator<<(std::ostream& os, const map<K,V>& map) {
     for (const auto& pair : map) {
-        os << pair.first << ": " << pair.second << std::endl;
+        os << pair.first << ": " << pair.second << endl;
     }
     return os;
 };
+
+template<typename K>
+std::ostream& operator<<(std::ostream& os, const vector<K>& vector) {
+    for (const auto& pair : vector) {
+        os << pair << endl;
+    }
+    return os;
+};
+
+void app();
+
+void init();
+
+void action(class Player &player);
+
+void inventory(class Player &player);
+
+void quit();
+
 
 int main(int argc,char **argv){
 
@@ -167,13 +187,19 @@ int main(int argc,char **argv){
             //Entity Zebi;
             /*cout << Zombie << endl << Zombie.Name << endl;
             cout << Zebi.Name;*/
-            Player Potbuy("Potbuy");
+            //Warrior dz;
+            //Player Potbuy("Potbuy");
+            /*cout << Potbuy.Classes_map["Warrior"].get_name() << endl;
+            cout << Potbuy.Classes_map["Warrior"].get_Stats()<< endl;
             Potbuy.set_classe("Warrior");
-            cout << Potbuy.get_stat("HP") << endl;
+            //cout << Potbuy.get_stat("HP") << endl;
             cout << Potbuy.get_name() << endl;
             cout << Potbuy.Classe.get_name() << endl;
             cout << Potbuy.Classe.get_Stats() << endl;
-            Potbuy.Inventory.print();
+            Potbuy.Inventory.print();*/
+            /*Enemy Zombie("Zombie");
+            cout << Zombie.get_name() << endl;
+            cout << Zombie.get_stats() << endl;*/
 
             
         }
@@ -185,3 +211,57 @@ int main(int argc,char **argv){
     }
     return 0;
 }
+
+void app(){
+    init();
+    /*vector<string> valid_action = {"inventory", "quit"};
+    string action;
+    while(find(valid_action.begin(), valid_action.end(), action) != valid_action.end()){
+        cout << "What do you want to do ?" << endl;
+        cout << "Available action are : inventory, stats, quit" << endl;
+        cin >> action;
+    }*/
+};
+
+void init(){
+    cout << "Welcome to the game !" << endl;
+    cout << "Choose a name for your character : ";
+    string name;
+    cin >> name;
+    Player player(name);
+    cout << "Choose a class for your character, available class are : " << endl << player.get_Classes() << endl;
+    string classe;
+    bool valid_classe = false;
+    while(!valid_classe){
+        cin >> classe;
+        if(player.Classes_map.count(classe)){
+            valid_classe = true;
+            player.set_classe(classe);
+        }
+        else{
+            cout << "Invalid class, please choose a valid class : ";
+        }
+    }
+    cout << "You choose " << player.get_name() << " as name and " << player.Classe.get_name() << " as class" << endl;
+    Enemy Zombie("Zombie");
+
+};
+
+void action(string action, class Player &player){
+    if(action == "inventory"){
+        inventory(player);
+    }
+    else if(action == "quit"){
+        quit();
+    }
+    else{
+        cout << "Invalid action, please choose a valid action : ";
+    }
+
+};
+
+void inventory(class Player &player){
+    player.Inventory.print();
+};
+
+void quit();

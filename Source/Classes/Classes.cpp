@@ -8,13 +8,9 @@
 #include "Warrior.hpp"
 #include "../../Include/Player.hpp"
 
-Classes::Classes(std::string classe){
+Classes::Classes(std::string classe){};
 
-};
-
-Classes::Classes(){
-
-};
+Classes::Classes(){};
 
 std::string Classes::get_name(){
     return Name;

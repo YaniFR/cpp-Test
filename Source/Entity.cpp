@@ -10,8 +10,8 @@ void Entity::remaining_HP(size_t damage){
 
 };
 
-size_t Entity::get_stat(std::string stat){
-    return Stats[stat];
+t_map Entity::get_stats(){
+    return Stats;
 }
 
 void Entity::stats_change(std::string stat, int change){

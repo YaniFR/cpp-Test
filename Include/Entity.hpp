@@ -16,9 +16,12 @@ public:
     void stats_change(std::string stat, int change);
 
     // setters
-    size_t get_stat(std::string stat);
+    t_map get_stats();
     std::string get_name();
 
+protected:
+
+    std::string Name = "Default";
     t_map Stats {
         {"HP", 0}, // Vie
         {"MP", 0}, // Mana
@@ -27,9 +30,5 @@ public:
         {"SPE", 0}, // Speed
         {"LCK", 0} // Chance
     };
-
-protected:
-
-    std::string Name = "Default";
 
 };

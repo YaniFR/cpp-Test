@@ -3,7 +3,7 @@
 
 Warrior::Warrior(){
     Name = "Warrior";
-    t_map Stats = {
+    Stats = {
         {"HP", 100}, // Vie
         {"MP", 20}, // Mana
         {"ATK", 80}, // Attaque
