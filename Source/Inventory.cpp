@@ -21,7 +21,7 @@ Inventory::Inventory(){
 
 void Inventory::print(){
     for (const auto& potion : Potions) {
-            std::cout << potion.first.Name << " " << potion.second << std::endl;
+            std::cout << potion.first.get_name() << " " << potion.second << std::endl;
         }
     for(class Weapons &weapon : Weapons){
         std::cout << weapon.Name << std::endl;

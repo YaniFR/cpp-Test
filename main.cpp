@@ -1,14 +1,18 @@
+#include <corecrt.h>
 #include <iostream>
 #include <ostream>
 #include <vector>
 #include <map>
+#include "Warrior.hpp"
 #include "json.hpp"
 #include <fstream>
 #include <sstream>
 #include "./Include/Entity.hpp"
 #include "./Include/Player.hpp"
+#include "./Include/Classes/Classes.hpp"
 using json = nlohmann::json;
 using namespace std;
+using t_map = std::map<std::string, size_t>;
 
 vector<string> get_strings(string caca1){
 
@@ -102,6 +106,15 @@ string liste_perso(t_map &dictio){
     return liste.str();
 }
 
+
+template<typename K, typename V>
+std::ostream& operator<<(std::ostream& os, const map<K,V>& map) {
+    for (const auto& pair : map) {
+        os << pair.first << ": " << pair.second << std::endl;
+    }
+    return os;
+};
+
 int main(int argc,char **argv){
 
     switch(atoi(argv[1])){
@@ -155,8 +168,11 @@ int main(int argc,char **argv){
             /*cout << Zombie << endl << Zombie.Name << endl;
             cout << Zebi.Name;*/
             Player Potbuy("Potbuy");
+            Potbuy.set_classe("Warrior");
+            cout << Potbuy.get_stat("HP") << endl;
             cout << Potbuy.get_name() << endl;
-            cout << Potbuy.get_value("HP") << endl;
+            cout << Potbuy.Classe.get_name() << endl;
+            cout << Potbuy.Classe.get_Stats() << endl;
             Potbuy.Inventory.print();
 
             

@@ -78,5 +78,12 @@
         "xloctime": "cpp"
     },
     "C_Cpp.errorSquiggles": "enabled",
-    "cmake.configureOnOpen": false
+    "cmake.configureOnOpen": false,
+    "cmake.debugConfig": {
+        "args": [
+            "6"
+        ]
+        
+    },
+    "debug.allowBreakpointsEverywhere": true
 }
