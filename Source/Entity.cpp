@@ -2,7 +2,7 @@
 #include <string>
 using namespace std;
 
-void Entity::remaining_HP(size_t damage){
+void Entity::remaining_HP(double damage){
     if (Stats["HP"]- damage <= 0.0){
         Stats["HP"]= 0.0;
         set_status("Dead");
@@ -37,11 +37,11 @@ void Entity::stats_change(std::string stat, int change){
     }
 };
 
-size_t Entity::get_stat(std::string stat){
+double Entity::get_stat(std::string stat){
     return Stats[stat];
 }
 
-size_t Entity::get_health(){
+double Entity::get_health(){
     return Stats["HP"];
 }
 

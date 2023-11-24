@@ -13,7 +13,7 @@
 #include "./Include/Enemy/Enemy.hpp"
 using json = nlohmann::json;
 using namespace std;
-using t_map = std::map<std::string, size_t>;
+using t_map = std::map<std::string, double>;
 
 vector<string> get_strings(string caca1){
 

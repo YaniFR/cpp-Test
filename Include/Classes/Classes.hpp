@@ -3,7 +3,7 @@
 #include <map>
 #include <iostream>
 
-typedef std::map<std::string, size_t> t_map;
+typedef std::map<std::string, double> t_map;
 typedef std::map<std::string, class Classes> class_map;
 
 class Classes{

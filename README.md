@@ -41,6 +41,7 @@ You can run the code like this
 ./test.exe number args
 
 number : 
+nothing (default) = test my little (very little) game !
 1 : Return the args that you have provided
 2 : Return the number of args
 3 : Enter two args and return the args with the highest value in "poids.json"
