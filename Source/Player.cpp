@@ -22,6 +22,7 @@ enemy_map Player::Enemy_map = {
 void Player::set_classe(std::string classe){
     if(classe_exists(classe)){
         Classe = Classes_map[classe];
+        set_stats(Classe);
     }else{
         std::cout << "Classe not found" << std::endl;
     }

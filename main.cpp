@@ -128,11 +128,13 @@ void app();
 
 void init();
 
-void action(class Player &player);
+void action(string action, class Player &player, bool &game, class Enemy &Enemy);
 
 void inventory(class Player &player);
 
-void quit();
+void quit(bool &game);
+
+void attack(class Player &player, class Enemy &enemy);
 
 
 int main(int argc,char **argv){
@@ -205,7 +207,8 @@ int main(int argc,char **argv){
         }
         // default : 
         default : {
-            auto dz = []()->string{ return "tahia rajel djazair"; }; // lambda function
+            init();
+            //auto dz = []()->string{ return "tahia rajel djazair"; }; // lambda function
         }
     
     }
@@ -221,6 +224,41 @@ void app(){
         cout << "Available action are : inventory, stats, quit" << endl;
         cin >> action;
     }*/
+};
+
+void action(string action, class Player &player, bool &game, class Enemy &Enemy){
+    if(action == "inventory"){
+        inventory(player);
+    }
+    else if(action == "quit"){
+        quit(game);
+    }
+    else if(action == "attack"){
+        attack(player, Enemy);
+    }
+    else{
+        cout << "Invalid action, please choose a valid action : ";
+    }
+
+
+};
+
+void inventory(class Player &player){
+    player.Inventory.print();
+};
+
+void quit(bool &game){
+    game = false;
+    cout << "Thanks for playing !" << endl;
+};
+
+void attack(class Player &player, class Enemy &enemy){
+    size_t damage = player.get_stat("ATK")/10 - enemy.get_stat("DEF")/5;
+    if(damage < 0){
+        damage = 0;
+    };
+    enemy.remaining_HP(damage);
+    cout << "You attack " << enemy.get_name() << " and deal " << damage << " damage" << endl;
 };
 
 void init(){
@@ -244,24 +282,21 @@ void init(){
     }
     cout << "You choose " << player.get_name() << " as name and " << player.Classe.get_name() << " as class" << endl;
     Enemy Zombie("Zombie");
+    bool game = true;
+    while(game){
+        cout << "Your HP : " << player.get_health() << endl;
+        cout << "Enemy HP : " << Zombie.get_health() << endl;
+        cout << "What do you want to do ?" << endl;
+        cout << "Available action are : attack, inventory, quit" << endl;
+        string choose_action;
+        while (choose_action != "attack" && choose_action != "inventory" && choose_action != "quit") {
+            cin >> choose_action;
+            action(choose_action, player, game, Zombie);
+            if (Zombie.get_status() == "Dead") {
+                cout << "You killed the Zombie !" << endl;
+                game = false;
+            }
+        }
+    };
 
 };
-
-void action(string action, class Player &player){
-    if(action == "inventory"){
-        inventory(player);
-    }
-    else if(action == "quit"){
-        quit();
-    }
-    else{
-        cout << "Invalid action, please choose a valid action : ";
-    }
-
-};
-
-void inventory(class Player &player){
-    player.Inventory.print();
-};
-
-void quit();

@@ -3,15 +3,24 @@
 using namespace std;
 
 void Entity::remaining_HP(size_t damage){
-    if (Stats["HP"]- damage <= 0.0)
+    if (Stats["HP"]- damage <= 0.0){
         Stats["HP"]= 0.0;
-    else 
-        Stats["HP"]-= damage;
-
+        set_status("Dead");
+    }
+    else
+        Stats["HP"]-= damage;  
 };
 
 t_map Entity::get_stats(){
     return Stats;
+}
+
+string Entity::get_status(){
+    return status;
+}
+
+void Entity::set_status(string str){
+    status = str;
 }
 
 void Entity::stats_change(std::string stat, int change){
@@ -27,6 +36,14 @@ void Entity::stats_change(std::string stat, int change){
         Stats[stat] += change;
     }
 };
+
+size_t Entity::get_stat(std::string stat){
+    return Stats[stat];
+}
+
+size_t Entity::get_health(){
+    return Stats["HP"];
+}
 
 std::string Entity::get_name(){
     return Name;
